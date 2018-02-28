@@ -139,7 +139,13 @@ $(document).ready(function() {
         title: taskTitle,
         content: taskContent
       }),
-      success: function getAllTasks
+      success: function(tasks) {
+        tasks.forEach(task => {
+          availableTasks[task.id] = task;
+        });
+
+        getAllAvailableBoards(handleDatatableRender, tasks);
+      }
     });
   }
 
